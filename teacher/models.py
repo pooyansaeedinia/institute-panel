@@ -1,30 +1,9 @@
 from django.db import models
 
+from accounts.models import CustomUser
+
+
 # Create your models here.
-
-class Profile(models.Model):
-    user = models.OneToOneField(
-        'accounts.CustomUser',
-        on_delete=models.CASCADE,
-        related_name='users',
-    )
-
-    EDUCATIONAL_GROUP_CHOICES = [
-        ('teacher', 'teacher'),
-        ('student', 'student'),
-        ('admin', 'admin'),
-    ]
-
-    educational_group = models.CharField(
-        max_length=7,
-        choices=EDUCATIONAL_GROUP_CHOICES,
-        default='',
-        blank=True,
-        null=True,
-    )
-
-    def __str__(self):
-        return self.user.username
 
 
 class Avatars(models.Model):
@@ -46,8 +25,13 @@ class Avatars(models.Model):
 
 class WeekDays(models.Model):
     WEEK_DAYS_CHOICES = (
-        'SAT','SUN','MON','TUE',
-        'WED','THU','FRI',
+        ('SAT', 'Saturday'),
+        ('SUN', 'Sunday'),
+        ('MON','monday'),
+        ('TUE','Tuesday'),
+        ('WED','Wednesday'),
+        ('THU','Thursday'),
+        ('FRI','Friday'),
     )
     name = models.CharField(
         max_length=4,
@@ -63,13 +47,13 @@ class Courses(models.Model):
         max_length=100,
     )
     teacher = models.ForeignKey(
-        Profile,
+        CustomUser,
         on_delete=models.CASCADE,
         related_name='teacher_courses',
         limit_choices_to={'educational_group': 'teacher'},
     )
     students = models.ManyToManyField(
-        Profile,
+        CustomUser,
         related_name='students_courses',
         blank=True,
         limit_choices_to={'educational_group': 'student'}
