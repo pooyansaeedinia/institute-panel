@@ -1,9 +1,13 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+
+from my_admin.models import Courses
 
 
 # Create your views here.
 
-
-class HomePageView(TemplateView):
-    template_name = 'my_admin/index.html'
+def dashboard(request):
+    courses = Courses.objects.all()
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'my_admin/index.html', context)
