@@ -1,36 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Course Details</title>
+{% block title %}
+    Course Details
+{% endblock title %}
+
+{% block head_refs %}
     <!-- Bootstrap CSS -->
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="icdl.css" />
-</head>
+    <link rel="stylesheet" href={% static 'css/course-detail.css' %}/>
+{% endblock head_refs %}
 
-<body>
+{% block contents %}
     <div class="d-flex">
         <!-- Sidebar -->
         <nav class="sidebar d-flex flex-column p-3">
             <h4 class="text-white">Menu</h4>
             <ul class="nav flex-column">
-                <li class="nav-item"><a href="../index.html" class="nav-link active">Courses</a></li>
-                <li class="nav-item"><a href="../teachers.html" class="nav-link">Teachers</a></li>
-                <li class="nav-item"><a href="../students.html" class="nav-link">Students</a></li>
+                <li class="nav-item"><a href="{% url 'my_admin:course_list' %}" class="nav-link active">Courses</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Teachers</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Students</a></li>
             </ul>
         </nav>
 
         <div class="content flex-grow-1">
             <div class="d-flex justify-content-end mb-3">
-                <a href="../index.html" class="back-btn text-decoration-none">BACK</a>
+                <a href="{% url 'my_admin:course_list' %}" class="back-btn text-decoration-none">BACK</a>
             </div>
 
-            <h5>Teacher Name: Mr. Salimi</h5>
-            <p>Course Duration: 65 hours</p>
-            <p>Number of Students: 20
+
+
+            <h5>Teacher Name: Mr/Ms {{ course.teacher }}</h5>
+            <p>Course Duration: {{ course.total_time }} hours</p>
+            <p>Number of Students: {{ number_of_students }}
                 <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#studentModal">View List</button>
             </p>
             <div class="row mt-4">
@@ -39,7 +42,7 @@
                     <div class="card stat-card mb-3">
                         <div class="d-flex justify-content-between align-items-center">
                             <span>Total Sessions</span>
-                            <div class="stat-number">13</div>
+                            <div class="stat-number">{{ session_number }}</div>
                         </div>
                     </div>
                     <div class="card stat-card mb-3">
@@ -61,19 +64,20 @@
                     <div class="card stat-card mb-3">
                         <div class="d-flex justify-content-between align-items-center">
                             <span>Class Days & Time</span>
-                            <div class="stat-number">Saturday 15–20</div>
+                            <div class="stat-number">{% for days in course.week_days.all|join:" - " %}
+                                        {{ days }} {% endfor %} {{ course.start_time|date:'H:i' }} / {{ course.end_time|date:'H:i' }}</div>
                         </div>
                     </div>
                     <div class="card stat-card mb-3">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span>Sessions Completed</span>
-                            <div class="stat-number">2025/07/11</div>
+                            <span>Course Start Date</span>
+                            <div class="stat-number">{{ course.start_date|date:"Y/m/d" }}</div>
                         </div>
                     </div>
                     <div class="card stat-card mb-3">
                         <div class="d-flex justify-content-between align-items-center">
                             <span>Course End Date</span>
-                            <div class="stat-number">2025/11/11</div>
+                            <div class="stat-number">{{ course.end_date|date:"Y/m/d" }}</div>
                         </div>
                     </div>
                 </div>
@@ -260,26 +264,9 @@
                 </div>
                 <div class="modal-body">
                     <ol class="student-list">
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
-                        <li>Ali Salimi</li>
+                        {% for student in course.students.all %}
+                            <li>{{ student }}</li>
+                        {% endfor %}
                     </ol>
                 </div>
             </div>
@@ -328,10 +315,10 @@
             </div>
         </div>
     </div>
+{% endblock contents %}
 
+{% block js %}
     <!-- Bootstrap JS -->
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="icdl.js"></script>
-</body>
-
-</html>
+    <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+{#    <script src="icdl.js"></script>#}
+{% endblock js %}

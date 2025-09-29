@@ -83,6 +83,7 @@ class Courses(models.Model):
     end_date = models.DateField()
     start_time = models.TimeField()
     end_time = models.TimeField()
+    total_time = models.IntegerField(default=0)
     week_days = models.ManyToManyField(
         WeekDays,
     )

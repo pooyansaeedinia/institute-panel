@@ -17,7 +17,7 @@
         <!-- Sidebar -->
         <nav class="sidebar pt-5">
             <ul class="nav flex-column">
-                <li class="nav-item"><a href="index.html" class="nav-link active">Courses</a></li>
+                <li class="nav-item"><a href="{% url 'my_admin:course_list' %}" class="nav-link active">Courses</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Teachers</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Students</a></li>
             </ul>
@@ -28,20 +28,20 @@
             <!-- Preliminary Section -->
             {% for department in departments %}
                 <h5 class="text-white mb-3">{{ department }}</h5>
-                {% for course in courses %}
-                    {% if course.department == department %}
-                        <div class="row g-3 mb-4">
+                <div class="row g-3 mb-4">
+                    {% for course in courses %}
+                        {% if course.department == department %}
                             <div class="col-6 col-md-4 col-lg-2">
-                                <a href="pages/icdl.html"
+                                <a href="{% url 'my_admin:course_detail' code=course.course_code %}"
                                    class="btn btn-dark w-100 d-flex flex-column align-items-center justify-content-center">
                                     <strong>{{ course.course_name }}</strong>
-                                    <small>{% for days in course.week_days.all %}
-                                        {{ days }} {% endfor %} {{ course.start_time }} / {{ course.end_time }}</small>
+                                    <small>{% for days in course.week_days.all|join:" - " %}
+                                        {{ days }} {% endfor %} {{ course.start_time|date:'H:i' }} / {{ course.end_time|date:'H:i' }}</small>
                                 </a>
                             </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
             {% endfor %}
         </div>
     </div>
