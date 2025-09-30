@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from my_admin.models import Courses, Departments
+from my_admin.models import Courses, Departments, Sessions, Homeworks
 
 
 # Create your views here.
@@ -39,11 +39,21 @@ def course_detail(request, code):
         number = float(total_time[:1]) + (int(total_time[2:4])/60)
         number_of_sessions = total_hours_of_class // number
         return int(number_of_sessions)
-
     session_number = session_number_calculate(course.start_time,course.end_time,course.total_time)
+    completed_session = len(Sessions.objects.filter(course=course))
+    remaining_sessions = session_number - completed_session
+    sessions = Sessions.objects.filter(course=course)
+    in_progress_homeworks = Homeworks.objects.filter(course=course, end=False)
+    finished_homeworks = Homeworks.objects.filter(course=course, end=True)
     context = {
         'course': course,
         'number_of_students': number_of_students,
+        'sessions': sessions,
         'session_number': session_number,
+        'completed_session': completed_session,
+        'remaining_sessions': remaining_sessions,
+        'in_progress_homeworks': in_progress_homeworks ,
+        'finished_homeworks': finished_homeworks,
     }
     return render(request, 'my_admin/course-detail.html', context)
+

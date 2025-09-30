@@ -7,7 +7,7 @@
 
 {% block head_refs %}
     <!-- Bootstrap CSS -->
-    <link href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" href={% static 'css/course-detail.css' %}/>
 {% endblock head_refs %}
@@ -30,7 +30,6 @@
             </div>
 
 
-
             <h5>Teacher Name: Mr/Ms {{ course.teacher }}</h5>
             <p>Course Duration: {{ course.total_time }} hours</p>
             <p>Number of Students: {{ number_of_students }}
@@ -48,13 +47,13 @@
                     <div class="card stat-card mb-3">
                         <div class="d-flex justify-content-between align-items-center">
                             <span>Sessions Completed</span>
-                            <div class="stat-number">4</div>
+                            <div class="stat-number">{{ completed_session }}</div>
                         </div>
                     </div>
                     <div class="card stat-card mb-3">
                         <div class="d-flex justify-content-between align-items-center">
                             <span>Sessions Remaining</span>
-                            <div class="stat-number">9</div>
+                            <div class="stat-number">{{ remaining_sessions }}</div>
                         </div>
                     </div>
                 </div>
@@ -65,7 +64,8 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <span>Class Days & Time</span>
                             <div class="stat-number">{% for days in course.week_days.all|join:" - " %}
-                                        {{ days }} {% endfor %} {{ course.start_time|date:'H:i' }} / {{ course.end_time|date:'H:i' }}</div>
+                                {{ days }} {% endfor %} {{ course.start_time|date:'H:i' }}
+                                / {{ course.end_time|date:'H:i' }}</div>
                         </div>
                     </div>
                     <div class="card stat-card mb-3">
@@ -89,168 +89,121 @@
                 <div class="table-responsive">
                     <table class="table table-bordered align-middle text-center custom-table">
                         <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Class Status</th>
-                                <th>Instructor Notes</th>
-                                <th>Absentees List</th>
-                            </tr>
+                        <tr>
+                            <th>Date</th>
+                            <th>Class Status</th>
+                            <th>Instructor Notes</th>
+                            <th>Absentees List</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>2025/07/11</td>
-                                <td>Held</td>
+                        <tr>
+                            {% for session in sessions %}
+                                <td>{{ session.date|date:'Y/m/d' }}</td>
+                                {% if session.is_done %}
+                                    <td>Held</td>
+                                {% else %}
+                                    <td>Cancelled</td>
+                                {% endif %}
                                 <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#teachenNoteModal">View</a></td>
+                                       data-bs-target="#teachenNoteModal{{ session.id }}">View</a></td>
                                 <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#absentModal">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>2025/07/18</td>
-                                <td>Held</td>
-                                <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#teachenNoteModal">View</a></td>
-                                <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#absentModal">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>2025/02/12</td>
-                                <td>Cancelled</td>
-                                <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#teachenNoteModal">View</a></td>
-                                <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#absentModal">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>2025/09/23</td>
-                                <td>Held</td>
-                                <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#teachenNoteModal">View</a></td>
-                                <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#absentModal">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>2025/01/27</td>
-                                <td>Cancelled</td>
-                                <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#teachenNoteModal">View</a></td>
-                                <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#absentModal">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>2025/06/05</td>
-                                <td>Cancelled</td>
-                                <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#teachenNoteModal">View</a></td>
-                                <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#absentModal">View</a></td>
-                            </tr>
-                            <tr>
-                                <td>2025/06/20</td>
-                                <td>Held</td>
-                                <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#teachenNoteModal">View</a></td>
-                                <td><a href="#" class="btn btn-sm btn-outline-light" data-bs-toggle="modal"
-                                        data-bs-target="#absentModal">View</a></td>
-                            </tr>
+                                       data-bs-target="#absentModal{{ session.id }}">View</a></td>
+
+                                <!-- ------------teacher note modal ------------- -->
+                                <div class="modal fade" id="teachenNoteModal{{ session.id }}" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Teacher's Note</h5>
+                                                <button type="button" class="btn-close-custom" data-bs-dismiss="modal">
+                                                    &times;
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <div class="list-box">
+                                                    <textarea rows="7">
+                                                        {{ session.note }}
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ------------- absent list modal --------------- -->
+                                <div class="modal fade" id="absentModal{{ session.id }}" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Absent List</h5>
+                                                <button type="button" class="btn-close-custom" data-bs-dismiss="modal">
+                                                    &times;
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <div class="list-box">
+                                                    {% if session.absent_list %}
+                                                        <ol>
+                                                            {% for student in session.absent_list.all %}
+                                                                <li>{{ student }}</li>
+                                                            {% endfor %}
+                                                        </ol>
+                                                    {% else %}
+                                                        <p>no absent</p>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             <!-- Home Work Section -->
             <div class="homework-section mt-5">
-                <h5 class="text-white">Home Work</h5>
+                <h5 class="text-white">HomeWorks</h5>
                 <p class="text-white">In Progress:</p>
-
                 <div class="row g-3">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="homework-card">
-                            <p>Register Date: 1404/06/01</p>
-                            <p>
-                                Home Work Home Work Home Work Home Work Home Work Home Work Home Work
-                            </p>
-                            <p>End Date: 1404/06/10</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="homework-card">
-                            <p>Register Date: 1404/06/01</p>
-                            <p>
-                                Home Work Home Work Home Work Home Work Home Work Home Work Home Work
-                            </p>
-                            <p>End Date: 1404/06/10</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="homework-card">
-                            <p>Register Date: 1404/06/01</p>
-                            <p>
-                                Home Work Home Work Home Work Home Work Home Work Home Work Home Work
-                            </p>
-                            <p>End Date: 1404/06/10</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4">
-                        <div class="homework-card">
-                            <p>Register Date: 1404/06/01</p>
-                            <p>
-                                Home Work Home Work Home Work Home Work Home Work Home Work Home Work
-                            </p>
-                            <p>End Date: 1404/06/10</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="homework-card">
-                            <p>Register Date: 1404/06/01</p>
-                            <p>
-                                Home Work Home Work Home Work Home Work Home Work Home Work Home Work
-                            </p>
-                            <p>End Date: 1404/06/10</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="homework-card">
-                            <p>Register Date: 1404/06/01</p>
-                            <p>
-                                Home Work Home Work Home Work Home Work Home Work Home Work Home Work
-                            </p>
-                            <p>End Date: 1404/06/10</p>
-                        </div>
-                    </div>
+                    {% if in_progress_homeworks %}
+                        {% for homework in in_progress_homeworks %}
+                            <div class="col-md-6 col-lg-4">
+                                <div class="homework-card">
+                                    <p>Register Date: {{ homework.date|date:'Y/m/d' }}</p>
+                                    <p>
+                                        {{ homework.content }}
+                                    </p>
+                                    <p>Deadline: {{ homework.deadline|date:'Y/m/d' }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p> no homework is in progress</p>
+                    {% endif %}
 
                     <p class="text-white">Finished:</p>
+                    {% if finished_homeworks %}
+                    {% for homework in finished_homeworks %}
                     <div class="col-md-6 col-lg-4">
                         <div class="homework-card">
-                            <p>Register Date: 1404/06/01</p>
+                            <p>Register Date: {{ homework.date|date:'Y/m/d' }}</p>
                             <p>
-                                Home Work Home Work Home Work Home Work Home Work Home Work Home Work
+                                {{ homework.content }}
                             </p>
-                            <p>End Date: 1404/06/10</p>
+                            <p>Deadline: {{ homework.deadline|date:'Y/m/d' }}</p>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="homework-card">
-                            <p>Register Date: 1404/06/01</p>
-                            <p>
-                                Home Work Home Work Home Work Home Work Home Work Home Work Home Work
-                            </p>
-                            <p>End Date: 1404/06/10</p>
-                        </div>
-                    </div>
+                    {% endfor %}
+                    {% else %}
+                        <p> no homework is Finished</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
     <!----------- number of students modal -------------->
     <div class="modal fade" id="studentModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -272,53 +225,10 @@
             </div>
         </div>
     </div>
-
-
-    <!-- ------------- absent list modal --------------- -->
-    <div class="modal fade" id="absentModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Absent List</h5>
-                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body text-center">
-                    <div class="list-box">
-                        <ol>
-                            <li>Ali Salimi</li>
-                            <li>Ali Salimi</li>
-                            <li>Ali Salimi</li>
-                            <li>Ali Salimi</li>
-                            <li>Ali Salimi</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ------------teacher note modal ------------- -->
-    <div class="modal fade" id="teachenNoteModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Teacher's Note</h5>
-                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body text-center">
-                    <div class="list-box">
-                        <textarea>
-
-                        </textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 {% endblock contents %}
 
 {% block js %}
     <!-- Bootstrap JS -->
     <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
-{#    <script src="icdl.js"></script>#}
+    {#    <script src="icdl.js"></script>#}
 {% endblock js %}
