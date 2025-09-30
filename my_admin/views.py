@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from accounts.models import CustomUser
 from my_admin.models import Courses, Departments, Sessions, Homeworks
 
 
@@ -57,3 +58,12 @@ def course_detail(request, code):
     }
     return render(request, 'my_admin/course-detail.html', context)
 
+
+def teachers_list(request):
+    teachers = CustomUser.objects.filter(educational_group='teacher')
+    courses = Courses.objects.all()
+    context = {
+        'teachers': teachers,
+        'courses': courses,
+    }
+    return render(request, 'my_admin/admin-teachers.html', context)

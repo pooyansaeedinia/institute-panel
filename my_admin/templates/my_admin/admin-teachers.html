@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Teachers
+{% endblock title %}
+
+{% block head_refs %}
+    <link href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/teachers.css' %}"/>
+{% endblock head_refs %}
+
+{% block contents %}
+    <div class="d-flex pt-3">
+        <nav class="sidebar pt-5">
+            <h4 class="ms-4 text-white">Menu</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a href="{% url 'my_admin:course_list' %}" class="nav-link">Courses</a></li>
+                <li class="nav-item"><a href="{% url 'my_admin:teachers' %}" class="nav-link active">Teachers</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Students</a></li>
+            </ul>
+        </nav>
+
+        <div class="content flex-grow-1 p-4 text-white">
+            <div class="container py-4">
+
+                <!-- Card -->
+                {% for teacher in teachers %}
+
+                    <div class="user-card">
+                    {% if teacher.gender == 'male' %}
+                        <img src="{% static 'avatars/man.png' %}" alt="male avatar">
+                    {% else %}
+                        <img src="{% static 'avatars/woman_6997570.png' %}" alt="female avatar">
+                    {% endif %}
+                        <div class="user-info">
+                            {% if teacher.gender == 'male' %}
+                                <h5>Mr. {{ teacher.username }}</h5>
+                            {% else %}
+                                <h5>Ms. {{ teacher.username }}</h5>
+                            {% endif %}
+                            {% if teacher.email %}
+                                <p>Email: {{ teacher.email }}</p>
+                            {% else %}
+                                <p>Email: no email has been submitted</p>
+                            {% endif %}
+                        </div>
+                        <button class="btn-course" data-bs-toggle="modal" data-bs-target="#activeCoursesModal{{ teacher.id }}">Active
+                            Courses
+                        </button>
+                    </div>
+
+                    <!-- --------------- active Courses Modal ----------------- -->
+                    <div class="modal fade" id="activeCoursesModal{{ teacher.id }}" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Active courses</h5>
+                                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal">&times;
+                                    </button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <div class="list-box">
+                                        <ol>
+                                            {% for course in courses %}
+                                                {% if course.teacher == teacher and course.is_active %}
+                                                <li>{{ course }}</li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock contents %}
+
+{% block js %}
+    <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    {#  <script src="index.js"></script>#}
+{% endblock js %}
