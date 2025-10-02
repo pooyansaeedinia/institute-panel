@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
@@ -9,11 +11,13 @@ class CustomUser(AbstractUser):
     user_code = models.CharField(
         editable=False,
         unique=True,
+        default='',
     )
 
     national_code = models.CharField(
         max_length=10,
         unique=True,
+        default='',
     )
 
     EDUCATIONAL_GROUP_CHOICES = [
@@ -33,9 +37,10 @@ class CustomUser(AbstractUser):
     Tel = models.CharField(
         max_length=12,
         unique=True,
+        default='',
     )
 
-    birth_date = models.DateField()
+    birth_date = models.DateField(default=timezone.now)
 
     GENDER_CHOICES = [
         ('male', 'male'),
