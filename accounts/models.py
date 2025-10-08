@@ -1,5 +1,3 @@
-import uuid
-
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
@@ -51,6 +49,10 @@ class CustomUser(AbstractUser):
         max_length=6,
         choices=GENDER_CHOICES,
         default='',
+    )
+
+    address = models.TextField(
+        default=''
     )
 
     def __str__(self):

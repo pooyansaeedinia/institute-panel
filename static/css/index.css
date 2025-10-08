@@ -1,0 +1,124 @@
+/* Global background */
+body {
+    background-color: rgb(33, 53, 85);
+    font-family: Arial, sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    min-height: 100vh;
+    background-color: rgb(11, 29, 58);
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.sidebar .nav {
+    margin-top: 100px;
+    padding-left: 20px;
+}
+
+
+.sidebar .nav-link {
+    color: #ffffff;
+    padding: 12px 20px;
+    display: block;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+    background-color: #1b2836;
+    color: #fff;
+    border-radius: 4px;
+}
+
+/* Main content shifts right */
+.content {
+    margin-left: 200px;
+}
+
+/* Buttons */
+.btn-dark {
+    background-color: rgb(11, 29, 58);
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-weight: 600;
+}
+
+/* Course thumbnail inside buttons */
+.btn-dark .course-thumb {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.btn-dark strong {
+    font-size: 1rem;
+    /* course name */
+    color: #fff;
+}
+
+.btn-dark small {
+    font-size: 0.8rem;
+    color: #ccc;
+    padding-top: 20px;
+}
+
+
+.btn-dark:hover {
+    background-color: #1b2836;
+}
+
+/* Responsive fix: sidebar shrinks */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 150px;
+    }
+
+    .content {
+        margin-left: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    .sidebar {
+        width: 130px;
+        padding-top: 20px;
+    }
+
+    .content {
+        margin-left: 130px;
+        padding: 10px;
+    }
+
+    .row > .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .btn-dark {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    .btn-dark .course-thumb {
+        height: 140px;
+    }
+
+    .btn-dark strong {
+        font-size: 1rem;
+    }
+
+    .btn-dark small {
+        font-size: 0.75rem;
+        padding-top: 10px;
+    }
+
+}

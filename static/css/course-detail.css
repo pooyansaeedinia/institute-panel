@@ -1,0 +1,423 @@
+html {
+    height: 100%;
+    overflow-y: auto;
+}
+
+body {
+    background-color: rgb(33, 53, 85);
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background-color: rgb(11, 29, 58);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 1000;
+}
+
+.sidebar .nav {
+    margin-top: 70px;
+}
+
+.sidebar h4 {
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
+.sidebar .nav-link {
+    color: #ffffff;
+    padding: 12px 20px;
+    display: block;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+    background-color: #1b2836;
+    border-radius: 4px;
+}
+
+.content {
+    padding: 30px;
+    margin-top: 30px;
+    margin-left: 220px;
+}
+
+.back-btn {
+    background-color: #1c2d44;
+    color: white;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+/* Buttons */
+.btn-custom {
+    background-color: #1c2d44;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.back-btn {
+    float: right;
+    margin-bottom: 20px;
+    background-color: #1c2d44;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.session-list h5 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Shared card styles */
+/* Shared card styles */
+.card {
+    background-color: #334d73;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Session stat cards */
+.stat-card {
+    background-color: #3e5879;
+}
+
+.stat-number {
+    background-color: #1c2d44;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #fff;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Course info cards */
+.info-card {
+    background-color: #3e5879;
+}
+
+
+.table-responsive {
+    background-color: #1c2d44;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+.table a.btn {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+}
+
+/* Table container background */
+.table-responsive {
+    background-color: #1c2d44;
+    /* dark blue */
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* Custom table styling */
+.custom-table thead {
+    background-color: #3e5879;
+    color: #fff;
+}
+
+.custom-table th {
+    background-color: #3e5879;
+    color: #fff;
+}
+
+.custom-table tbody tr {
+    background-color: #2f496e;
+    color: #fff;
+}
+
+.custom-table th,
+.custom-table td {
+    border-color: #445b7c;
+}
+
+/* Buttons inside table */
+.custom-table a.btn {
+    background-color: #334d73;
+    color: white;
+    border: none;
+}
+
+/* responsive */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 180px;
+    }
+
+    .content {
+        margin-left: 190px;
+        padding: 15px;
+
+    }
+
+    .back-btn {
+        float: none;
+        display: block;
+        margin: 0 auto 20px auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: -200px;
+        width: 200px;
+        transition: left 0.3s ease;
+        z-index: 2000;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .content {
+        margin-left: 0;
+        /* take full width */
+        padding: 15px;
+    }
+
+    .back-btn {
+        display: block;
+        margin: 0 auto 15px auto;
+    }
+
+    .row>.col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .card {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .stat-number {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+}
+
+
+/* ---------------- number of students modal styles --------------------- */
+.modal-content {
+    background: linear-gradient(145deg, #e8ebf5, #fdfdfd);
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+}
+
+.modal-header {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color: #2c3e50;
+}
+
+.divider {
+    width: 60px;
+    height: 3px;
+    background-color: #495c89;
+    border-radius: 2px;
+    margin: 8px 0 15px;
+}
+
+.student-list {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    color: #2d2d2d;
+}
+
+.student-list li {
+    margin-bottom: 6px;
+}
+
+.btn-close-custom {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    color: #e74c3c;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+
+.btn-close-custom:hover {
+    color: #c0392b;
+    transform: scale(1.1);
+}
+
+.btn-custom {
+    background-color: #495c89;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #2e3f66;
+    transform: translateY(-2px);
+}
+
+/* ------------------absent list modal style--------------- */
+.modal-content {
+    background: linear-gradient(145deg, #e8ebf5, #fdfdfd);
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    padding: 15px 25px;
+    position: relative;
+}
+
+.modal-header {
+    border-bottom: none;
+    padding-bottom: 0;
+    position: relative;
+    /* for absolute X button */
+    justify-content: center;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: #2c3e50;
+    text-align: center;
+    width: 100%;
+}
+
+.btn-close-custom {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    color: #e74c3c;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-close-custom:hover {
+    color: #c0392b;
+    transform: scale(1.1);
+}
+
+.list-box {
+    background-color: #e4e7f1;
+    border: 1px solid #b6bed9;
+    border-radius: 8px;
+    padding: 15px 25px;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.list-box ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.list-box li {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+
+/* homework styles */
+
+.homework-card {
+    background-color: #d6d9f5;
+    color: black;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    height: 100%;
+}
+
+.homework-card p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+
+
+
+/* responsiv for small screens */
+@media (max-width: 576px) {
+    .sidebar {
+        left: -200px;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .content {
+        margin-left: 0 !important;
+        padding: 10px;
+        width: 100%;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+        /* allow only table to scroll */
+    }
+
+    .custom-table {
+        min-width: 500px;
+        /* ensures table scrolls instead of page */
+    }
+}

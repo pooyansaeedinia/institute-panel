@@ -1,0 +1,215 @@
+
+body {
+    background-color: rgb(33, 53, 85);
+    font-family: Arial, sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    min-height: 100vh;
+    background-color: rgb(11, 29, 58);
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.sidebar .nav {
+    margin-top: 100px;
+    padding-left: 20px;
+}
+
+
+.sidebar .nav-link {
+    color: #ffffff;
+    padding: 12px 20px;
+    display: block;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+    background-color: #1b2836;
+    color: #fff;
+    border-radius: 4px;
+}
+
+/* Main content shifts right */
+.content {
+    margin-left: 200px;
+}
+
+.student-card {
+    background-color: #d9e4f4;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 700px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.student-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.student-header img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid #1c3b63;
+    background: #fff;
+}
+
+.student-info p {
+    margin: 2px 0;
+    font-size: 14px;
+    color: #222;
+}
+
+.dropdown-section {
+    background-color: #2e518c;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-content {
+    background-color: #d9e4f4;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.table-custom {
+    background-color: #d9e4f4;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table-custom th,
+.table-custom td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 150px;
+    }
+
+    .content {
+        margin-left: 150px;
+    }
+
+    .student-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .student-header img {
+        margin-bottom: 10px;
+    }
+}
+
+/* responsive */
+@media (max-width: 576px) {
+    .sidebar {
+        width: 130px;
+        padding-top: 20px;
+    }
+
+    .content {
+        margin-left: 130px;
+        padding: 10px;
+    }
+}
+
+/* extra small devices: under 550px */
+@media (max-width: 550px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .sidebar {
+        width: 96px;
+        border-top-right-radius: 14px;
+        border-bottom-right-radius: 14px;
+    }
+
+    .sidebar .nav {
+        margin-top: 60px;
+        padding-left: 10px;
+    }
+
+    .sidebar .nav-link {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .content {
+        margin-left: 96px;
+        padding: 12px;
+    }
+
+    .student-card {
+        max-width: 100%;
+        margin: 12px auto;
+        padding: 14px;
+        border-radius: 12px;
+    }
+
+    .student-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .student-header img {
+        width: 64px;
+        height: 64px;
+        margin-right: 0;
+        margin-bottom: 6px;
+    }
+
+    .student-info h5 {
+        font-size: 16px;
+    }
+
+    .student-info p {
+        font-size: 13px;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+    .dropdown-section {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .dropdown-content {
+        padding: 8px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table-custom th,
+    .table-custom td {
+        padding: 8px;
+        font-size: 13px;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+}

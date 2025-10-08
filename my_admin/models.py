@@ -131,7 +131,7 @@ class Sessions(models.Model):
 def not_in_the_past(value):
     today = timezone.localdate()
     if value < today:
-        raise ValidationError("deadline must be in the future")
+        raise ValidationError("deadline must be in the past")
 
 
 class Homeworks(models.Model):

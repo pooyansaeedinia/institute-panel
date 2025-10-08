@@ -67,3 +67,12 @@ def teachers_list(request):
         'courses': courses,
     }
     return render(request, 'my_admin/admin-teachers.html', context)
+
+def students_list(request):
+    students = CustomUser.objects.filter(educational_group='student')
+    courses = Courses.objects.all()
+    context = {
+        'students': students,
+        'courses': courses,
+    }
+    return render(request, 'my_admin/admin-students.html', context)
