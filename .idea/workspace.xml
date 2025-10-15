@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d31b8af6-fc90-46ab-861d-e31573d8b78c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6980af30-d507-400a-8886-afa27bc1fa16.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6980af30-d507-400a-8886-afa27bc1fa16/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_admin/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_admin/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_admin/templates/my_admin/admin-students.html" beforeDir="false" afterPath="$PROJECT_DIR$/my_admin/templates/my_admin/admin-students.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_admin/templates/my_admin/admin-teachers.html" beforeDir="false" afterPath="$PROJECT_DIR$/my_admin/templates/my_admin/admin-teachers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_admin/templates/my_admin/course-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/my_admin/templates/my_admin/course-detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_admin/templates/my_admin/course-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/my_admin/templates/my_admin/course-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_admin/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_admin/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_admin/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_admin/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,24 +34,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.panel_project.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/POOYAN/OneDrive/Desktop/New folder",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.panel_project.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/programming/django/panel_project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\POOYAN\OneDrive\Desktop\panel_project\my_admin\templates\my_admin" />
@@ -129,6 +119,11 @@
       <workItem from="1759578543176" duration="905000" />
       <workItem from="1759580053833" duration="528000" />
       <workItem from="1759683603927" duration="67000" />
+      <workItem from="1759933045340" duration="657000" />
+      <workItem from="1759940244812" duration="617000" />
+      <workItem from="1759944712866" duration="103000" />
+      <workItem from="1760092900328" duration="514000" />
+      <workItem from="1760093516793" duration="34000" />
     </task>
     <servers />
   </component>

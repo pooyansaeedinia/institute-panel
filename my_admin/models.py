@@ -66,7 +66,7 @@ class Courses(models.Model):
     )
     teacher = models.ForeignKey(
         CustomUser,
-        on_delete=models.CASCADE,
+        on_delete=models.SET("no teacher"),
         related_name='teacher_courses',
         limit_choices_to={'educational_group': 'teacher'},
     )
@@ -91,7 +91,7 @@ class Courses(models.Model):
     )
     avatar = models.ForeignKey(
         Avatars,
-        on_delete=models.CASCADE,
+        on_delete=models.SET(4),
         related_name='avatar_courses',
         blank=True,
         null=True
