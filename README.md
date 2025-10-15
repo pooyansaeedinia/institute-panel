@@ -40,7 +40,7 @@ It was developed collaboratively — **Frontend by [Sogand Mohamadipour](https:/
 - Clean and extendable structure for backend integration  
 
 ### 🐍 Backend
-- Built with **Python**  
+- Built with **Django**  
 - RESTful structure for easy data handling  
 - Compatible with the frontend interface  
 - Scalable for future database and authentication integration  
@@ -49,7 +49,7 @@ It was developed collaboratively — **Frontend by [Sogand Mohamadipour](https:/
 
 ## 🛠 Tech Stack
 **Frontend:** HTML, CSS, Bootstrap, JavaScript  
-**Backend:** Python  
+**Backend:** Django, python  
 **Version Control:** Git & GitHub  
 
 ---
