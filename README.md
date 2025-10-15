@@ -23,9 +23,9 @@ It was developed collaboratively — **Frontend by [Sogand Mohamadipour](https:/
    pip install -r requirements.txt  
 
 3. Run the backend server:  
-   python app.py  
+   python manage.py runserver  
 
-4. Open your browser and go to **http://localhost:5000**
+4. Open your browser and go to **http://localhost:8000**
 ```
 
 ---
