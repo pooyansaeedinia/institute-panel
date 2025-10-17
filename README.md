@@ -14,7 +14,7 @@ It was developed collaboratively — **Frontend by [Sogand Mohamadipour](https:/
 ## ⚙️ Installation & Setup
 
 ### 🔹 Frontend (HTML, CSS, Bootstrap, JS)
-``` bash
+```bash
 1. Clone the full-stack repository:  
    git clone https://github.com/pooyansaeedinia/institute-panel.git  
    cd institute-panel  
@@ -29,7 +29,6 @@ It was developed collaboratively — **Frontend by [Sogand Mohamadipour](https:/
 ```
 
 ---
-
 ## ⚡ Features
 
 ### 🖥 Frontend
@@ -40,7 +39,7 @@ It was developed collaboratively — **Frontend by [Sogand Mohamadipour](https:/
 - Clean and extendable structure for backend integration  
 
 ### 🐍 Backend
-- Built with **Django**  
+- Built with **Python** & **Django**  
 - RESTful structure for easy data handling  
 - Compatible with the frontend interface  
 - Scalable for future database and authentication integration  
@@ -49,7 +48,7 @@ It was developed collaboratively — **Frontend by [Sogand Mohamadipour](https:/
 
 ## 🛠 Tech Stack
 **Frontend:** HTML, CSS, Bootstrap, JavaScript  
-**Backend:** Django, python  
+**Backend:** Python, Django  
 **Version Control:** Git & GitHub  
 
 ---
@@ -61,4 +60,4 @@ It was developed collaboratively — **Frontend by [Sogand Mohamadipour](https:/
 
 ## 👩‍💻 Contributors
 - **[Sogand Mohamadipour](https://github.com/Sogand-mohamadiPour)** – Frontend Developer (HTML, CSS, Bootstrap, JavaScript)  
-- **[Pooyan Saeedinia](https://github.com/pooyansaeedinia)** – Backend Developer (Python)
+- **[Pooyan Saeedinia](https://github.com/pooyansaeedinia)** – Backend Developer (Python, Django)
